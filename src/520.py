@@ -33,16 +33,16 @@ def depth(s: str) -> int:
     # We subtract one because we need to subtract the depth of the root node
     return max_depth - 1
 
-###### Testcases given from the prompt ######
 
 def test_root_no_children():
-    s = "(00)" 
+    s = "(00)"
     assert depth(s) == 0
 
 
 def test_root_two_children():
-    s = "((00)(00))" 
+    s = "((00)(00))"
     assert depth(s) == 1
+
 
 def test_root_three_children():
     s = "((((00)0)0)0)"
