@@ -8,10 +8,6 @@ represented as 0. Otherwise, it will be represented by a new (lr) pair.
 """
 
 
-def test_dummy():
-    assert True
-
-
 def depth(s: str) -> int:
     """This method ascertains the depth of a binary tree by tracking the max 
     depth using a stack to track the parenthesis. When we encounter a "(", we
