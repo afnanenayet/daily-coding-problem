@@ -56,6 +56,7 @@ def test_non_adj_max_sum():
     test_cases = [
         TestCase([2, 4, 6, 2, 5], 13),
         TestCase([5, 1, 1, 5], 10),
+        TestCase([-1, -2, -3, -4], 0),
     ]
 
     for test_case in test_cases:
