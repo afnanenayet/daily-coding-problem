@@ -19,6 +19,11 @@ def valid_hops(A: List[int]) -> bool:
     array and accumulating hops as we see them. We also have to remove a hop for
     every traversal we do. We keep moving until we run out of hops or we reach
     the end.
+
+    You might have a thought, like I did, that you can just take the sum of the
+    elements in the array and check if the sum is greater than or equal to the
+    length of the array - 1, but this is not valid because could have a scenario
+    like this: `[0, 0, 100]`, which should return false.
     """
     # The base case is that you have an empty list, which means you don't have
     # to traverse to any location, which means you've already reached the last
