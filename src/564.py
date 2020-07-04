@@ -12,7 +12,7 @@ Example:
 """
 
 from typing import List
-from collections import namedtuple
+from collections import namedtuple, deque
 
 
 def non_adj_max_sum(A: List[int]) -> int:
@@ -20,27 +20,33 @@ def non_adj_max_sum(A: List[int]) -> int:
     through the array. Let us define the maximum non-adjacent sum of the
     subarray `A[0..i]` as `max[i]`. The maximum for any subarray `A[0..i]` is
     `max(max[i - 2], A[i], A[i] + max[i - 2])`.
+
+    This is O(n) time and O(1) space.
     """
     if not A:
         raise ValueError("The input array must not be empty")
 
-    maxes = [0 for _ in A]
-
-    # Base case: the maximum sum for an array with one element is just the value
-    # of that element or 0, whichever is higher
-    maxes[0] = max(A[0], 0)
+    # Base case: the maximum sum for the array at the beginning is 0. The
+    # `maxes` deque holds the maximum for A[0..i - 1] and A[0..i] at any given
+    # iteration of the loop, which makes this constant space. The key insight
+    # here is that we only need to record the max of A[0..i-2] and A[0..i-1] at
+    # any given iteration.
+    maxes = deque([0, 0])
 
     # Iterate through the array, recording the current max as the maximum of:
     # - the maximum value of A[0..i - 1]
     # - the maximum value of A[0..i - 2] + A[i]
     # - A[i]
-    for i in range(1, len(A)):
-        elem = A[i]
+    for elem in A:
+        current_max = max(maxes[0] + elem, maxes[1], elem)
 
-        if i < 2:
-            maxes[i] = max(maxes[i - 1], elem)
-        else:
-            maxes[i] = max(maxes[i - 2] + elem, elem, maxes[i - 1])
+        # Popping and appending is O(1) since `deque` is implemented as a linked
+        # list under the hood
+        maxes.popleft()
+        maxes.append(current_max)
+
+    # At the very end, maxes is [max[0..n - 1], max[0..n]], so we return the
+    # last element in the deque to get our answer.
     return maxes[-1]
 
 
