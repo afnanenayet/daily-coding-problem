@@ -13,12 +13,12 @@ class BinaryTree:
     def __init__(
         self,
         value,
-        left: Optional[BinaryTree] = None,
-        right: Optional[BinaryTree] = None,
+        left: Optional["BinaryTree"] = None,
+        right: Optional["BinaryTree"] = None,
     ):
         self.value = value
-        self.left: Optional[BinaryTree] = left
-        self.right: Optional[BinaryTree] = right
+        self.left: Optional["BinaryTree"] = left
+        self.right: Optional["BinaryTree"] = right
 
 
 def subtree_helper(a: Optional[BinaryTree], b: Optional[BinaryTree]) -> bool:
