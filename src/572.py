@@ -80,6 +80,7 @@ def test_next_permutation():
         TestCase([1, 3, 2], [2, 1, 3]),
         TestCase([3, 2, 1], [1, 2, 3]),
         TestCase([2, 3, 1], [3, 1, 2]),
+        TestCase([2, 30, 1, 5], [2, 30, 5, 1]),
     ]
 
     for test_case in test_cases:
