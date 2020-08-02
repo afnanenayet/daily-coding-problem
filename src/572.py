@@ -20,7 +20,7 @@ def next_permutation(nums: List[int]) -> List[int]:
     We can figure out which digit we want to switch by finding the first index where the ith element
     is less than the i + 1th element.
 
-    Ex: in [1, 2, 3], 1 < 2, so we want to switch 1. In [1, 3, 2], 1 < 3 so we want to switch 1.
+    Ex: in [1, 2, 3], 2 < 3, so we want to switch 2. In [1, 3, 2], 1 < 3 so we want to switch 1.
 
     Once we know which digit we want to switch, we swap it with the smallest element that's greater
     than it on the right side of the array. In both of the aforementioned examples, that element is
