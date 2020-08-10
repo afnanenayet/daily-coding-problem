@@ -4,8 +4,10 @@
 
 #pragma once
 
+#include <algorithm>
 #include <catch2/catch.hpp>
 #include <iostream>
+#include <memory>
 #include <optional>
 #include <queue>
 #include <unordered_map>
