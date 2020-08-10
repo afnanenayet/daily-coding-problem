@@ -2,6 +2,4 @@
                           // in one cpp file
 #include <catch2/catch.hpp>
 
-TEST_CASE("Sanity check", "[main]") {
-  REQUIRE(true);
-}
+TEST_CASE("Sanity check", "[main]") { REQUIRE(true); }
