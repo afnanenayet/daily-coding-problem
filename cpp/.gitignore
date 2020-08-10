@@ -34,3 +34,8 @@
 # build library
 build/
 compile_commands.json
+
+# LSP cache directories
+.clangd/
+.ccls/
+.cquery/
