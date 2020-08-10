@@ -9,6 +9,7 @@ find_package(Catch2 REQUIRED)
 file(GLOB_RECURSE SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 add_executable(dcp 
     src/main.cpp
+    src/579.cpp
 )
 target_link_libraries(dcp Catch2::Catch2)
 include(CTest)
