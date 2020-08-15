@@ -5,6 +5,7 @@
 #pragma once
 
 #include <algorithm>
+#include <array>
 #include <catch2/catch.hpp>
 #include <iostream>
 #include <memory>
