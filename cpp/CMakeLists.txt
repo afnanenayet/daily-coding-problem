@@ -16,6 +16,7 @@ add_executable(dcp
     src/main.cpp
     src/579.cpp
     src/580.cpp
+    src/581.cpp
 )
 target_link_libraries(dcp Catch2::Catch2)
 include(CTest)
