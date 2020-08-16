@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <array>
 #include <catch2/catch.hpp>
+#include <fmt/core.h>
 #include <iostream>
 #include <memory>
 #include <optional>

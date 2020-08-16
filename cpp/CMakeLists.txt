@@ -10,6 +10,7 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang" AND CMAKE_GENERATOR STREQUAL "Ninja")
 endif()
 
 find_package(Catch2 REQUIRED)
+find_package(fmt REQUIRED)
 
 file(GLOB_RECURSE SRC_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 add_executable(dcp 
@@ -20,6 +21,7 @@ add_executable(dcp
     src/582.cpp
 )
 target_link_libraries(dcp Catch2::Catch2)
+target_link_libraries(dcp fmt::fmt)
 include(CTest)
 target_compile_features(dcp PUBLIC cxx_std_17)
 target_include_directories(dcp PUBLIC ${PROJECT_SOURCE_DIR}/include)

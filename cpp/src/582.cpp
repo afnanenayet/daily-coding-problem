@@ -22,7 +22,7 @@ class Interval {
 };
 
 std::ostream &operator<<(std::ostream &os, Interval const &value) {
-    os << "{" << value.start << ", " << value.end << "}";
+    os << fmt::format("({:d}, {:d})", value.start, value.end);
     return os;
 }
 
