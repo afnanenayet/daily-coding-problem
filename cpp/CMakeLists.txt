@@ -18,6 +18,7 @@ add_executable(dcp
     src/580.cpp
     src/581.cpp
     src/582.cpp
+    src/583.cpp
 )
 target_link_libraries(dcp Catch2::Catch2)
 target_link_libraries(dcp fmt::fmt)
