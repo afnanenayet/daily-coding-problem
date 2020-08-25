@@ -19,7 +19,8 @@ add_executable(dcp
     src/581.cpp
     src/582.cpp
     src/583.cpp
-)
+    src/584.cpp
+    )
 target_link_libraries(dcp Catch2::Catch2)
 target_link_libraries(dcp fmt::fmt)
 target_compile_features(dcp PUBLIC cxx_std_17)
