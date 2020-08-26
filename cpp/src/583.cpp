@@ -24,7 +24,7 @@ using uint = unsigned int;
 template <uint X, uint Y> uint max_coins(const uint (&grid)[X][Y]) {
     // dp[i][j] returns the maximum number of coins that you can collect going
     // from [0][0] to [i][j], moving only right or down
-    Matrix2D<uint, X, Y> dp;
+    Matrix2D<uint, X, Y> dp{};
 
     // Initialize the DP grid by setting the max for the top and left edges
     for (int i = 0; i < dp.size(); i++) {

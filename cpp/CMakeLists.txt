@@ -1,3 +1,5 @@
+include(CheckCXXCompilerFlag)
+
 cmake_minimum_required(VERSION 3.18)
 project(DCP VERSION 1.0
     DESCRIPTION "My solutions for the daily coding problem"
@@ -7,6 +9,18 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang" AND CMAKE_GENERATOR STREQUAL "Ninja")
     set(CMAKE_C_FLAGS "-fcolor-diagnostics ${CMAKE_C_FLAGS}")
     set(CMAKE_CXX_FLAGS "-fcolor-diagnostics ${CMAKE_CXX_FLAGS}")
+endif()
+
+# Enable address sanitizer in debug builds
+set(SanitizeFlag "-fsanitize=address")
+set(NoOmitFramePointerFlag "-fno-omit-frame-pointer")
+
+check_cxx_compiler_flag("-fno-omit-frame-pointer" NoOmitFramePointerFlag)
+check_cxx_compiler_flag("-fsanitize=address" SanitizeFlag)
+
+if (NoOmitFramePointer AND SanitizeAddress)
+    string(APPEND CMAKE_CXX_FLAGS_DEBUG  " -fno-omit-frame-pointer -fsanitize=address")
+    string(APPEND CMAKE_LINKER_FLAGS_DEBUG  " -fno-omit-frame-pointer -fsanitize=address")
 endif()
 
 find_package(Catch2 REQUIRED)
@@ -20,6 +34,7 @@ add_executable(dcp
     src/582.cpp
     src/583.cpp
     src/584.cpp
+    src/585.cpp
     )
 target_link_libraries(dcp Catch2::Catch2)
 target_link_libraries(dcp fmt::fmt)
