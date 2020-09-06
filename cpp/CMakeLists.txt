@@ -15,8 +15,8 @@ endif()
 set(SanitizeFlag "-fsanitize=address")
 set(NoOmitFramePointerFlag "-fno-omit-frame-pointer")
 
-check_cxx_compiler_flag("-fno-omit-frame-pointer" NoOmitFramePointerFlag)
-check_cxx_compiler_flag("-fsanitize=address" SanitizeFlag)
+check_cxx_compiler_flag("-fno-omit-frame-pointer" NoOmitFramePointer)
+check_cxx_compiler_flag("-fsanitize=address" SanitizeAddress)
 
 if (NoOmitFramePointer AND SanitizeAddress)
     string(APPEND CMAKE_CXX_FLAGS_DEBUG  " -fno-omit-frame-pointer -fsanitize=address")
