@@ -15,13 +15,12 @@ endif()
 set(SanitizeFlag "-fsanitize=address")
 set(NoOmitFramePointerFlag "-fno-omit-frame-pointer")
 
-check_cxx_compiler_flag("-fno-omit-frame-pointer" NoOmitFramePointer)
-check_cxx_compiler_flag("-fsanitize=address" SanitizeAddress)
+check_cxx_compiler_flag("${SanitizeFlag}" SanitizeAddress)
+check_cxx_compiler_flag("${NoOmitFramePointerFlag}" NoOmitFramePointer)
 
-if (NoOmitFramePointer AND SanitizeAddress)
-    string(APPEND CMAKE_CXX_FLAGS_DEBUG  " ${SanitizeFlag} ${NoOmitFramePointerFlag}")
-    string(APPEND CMAKE_LINKER_FLAGS_DEBUG  " ${SanitizeFlag} ${NoOmitFramePointerFlag}")
-endif()
+# For some reason the sanitize address check doesn't get detected properly
+string(APPEND CMAKE_CXX_FLAGS_DEBUG  " ${SanitizeFlag} ${NoOmitFramePointerFlag}")
+string(APPEND CMAKE_LINKER_FLAGS_DEBUG  " ${SanitizeFlag} ${NoOmitFramePointerFlag}")
 
 find_package(Catch2 REQUIRED)
 find_package(fmt REQUIRED)
