@@ -43,6 +43,6 @@ target_compile_features(dcp PUBLIC cxx_std_17)
 target_include_directories(dcp PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_precompile_headers(dcp PRIVATE ${PROJECT_SOURCE_DIR}/include/pch.hpp)
 
-# We can't use precompiled headers for the main directory beacuse of the catch2
+# We can't use precompiled headers for the main directory because of the catch2
 # macro that creates the main testing harness
 set_source_files_properties(${PROJECT_SOURCE_DIR}/src/main.cpp PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
