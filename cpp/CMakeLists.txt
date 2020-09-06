@@ -19,8 +19,8 @@ check_cxx_compiler_flag("-fno-omit-frame-pointer" NoOmitFramePointer)
 check_cxx_compiler_flag("-fsanitize=address" SanitizeAddress)
 
 if (NoOmitFramePointer AND SanitizeAddress)
-    string(APPEND CMAKE_CXX_FLAGS_DEBUG  " -fno-omit-frame-pointer -fsanitize=address")
-    string(APPEND CMAKE_LINKER_FLAGS_DEBUG  " -fno-omit-frame-pointer -fsanitize=address")
+    string(APPEND CMAKE_CXX_FLAGS_DEBUG  " ${SanitizeFlag} ${NoOmitFramePointerFlag}")
+    string(APPEND CMAKE_LINKER_FLAGS_DEBUG  " ${SanitizeFlag} ${NoOmitFramePointerFlag}")
 endif()
 
 find_package(Catch2 REQUIRED)
@@ -35,6 +35,7 @@ add_executable(dcp
     src/583.cpp
     src/584.cpp
     src/585.cpp
+    src/586.cpp
     )
 target_link_libraries(dcp Catch2::Catch2)
 target_link_libraries(dcp fmt::fmt)
