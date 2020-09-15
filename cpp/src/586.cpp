@@ -136,12 +136,26 @@ auto k_most_similar(const std::vector<UserWebsiteRecord> &records,
 }
 
 TEST_CASE("provided example", "[586]") {
-    std::vector<UserWebsiteRecord> input{
-        {"a", 1}, {"a", 3}, {"a", 5}, {"b", 2}, {"b", 6}, {"c", 1},
-        {"c", 2}, {"c", 3}, {"c", 4}, {"c", 5}, {"d", 4}, {"d", 5},
-        {"d", 6}, {"d", 7}, {"e", 1}, {"e", 3}, {"e", 5}, {"e", 6}};
-    std::vector<WebsitePair> expected = {
-        {"a", "e"},
+    std::vector input{UserWebsiteRecord{"a", 1},
+                      {"a", 3},
+                      {"a", 5},
+                      {"b", 2},
+                      {"b", 6},
+                      {"c", 1},
+                      {"c", 2},
+                      {"c", 3},
+                      {"c", 4},
+                      {"c", 5},
+                      {"d", 4},
+                      {"d", 5},
+                      {"d", 6},
+                      {"d", 7},
+                      {"e", 1},
+                      {"e", 3},
+                      {"e", 5},
+                      {"e", 6}};
+    std::vector expected = {
+        WebsitePair{"a", "e"},
     };
     REQUIRE(k_most_similar(input, 1) == expected);
 }

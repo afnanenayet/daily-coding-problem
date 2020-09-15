@@ -4,6 +4,7 @@ adjacent characters are the same. If this is not possible, return None
 */
 
 #include "pch.hpp"
+#include <optional>
 
 namespace p584 {
 
@@ -34,7 +35,7 @@ bool operator<(const pq_key &a, const pq_key &b) { return a.freq < b.freq; }
 // temporarily removing the top element so we can get the next top element.
 //
 // This approach is O(n) space and O(nlogn) time.
-std::optional<std::string> rearrange_chars(const std::string &input) {
+auto rearrange_chars(const std::string &input) {
     // A count of the frequency for each character in the string
     std::unordered_map<char, unsigned int> freqs;
 
@@ -93,9 +94,9 @@ std::optional<std::string> rearrange_chars(const std::string &input) {
     // all of the letters haven't been exhausted, which means that we would have
     // repeated adjacent characters
     if (last_entry.has_value()) {
-        return std::nullopt;
+        return std::optional<std::string>{};
     }
-    return res;
+    return std::make_optional(std::move(res));
 }
 
 // Check whether a string meets the adjacency condition defined by the problem
