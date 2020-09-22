@@ -8,6 +8,7 @@
 #include <array>
 #include <catch2/catch.hpp>
 #include <fmt/core.h>
+#include <fmt/ranges.h>
 #include <iostream>
 #include <memory>
 #include <optional>
