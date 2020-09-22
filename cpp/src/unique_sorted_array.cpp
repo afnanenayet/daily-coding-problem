@@ -26,8 +26,7 @@ template <auto size> size_t unique_sort(std::array<int, size> &inputs) {
         // element in the array we're iterating isn't equal to the last element
         // in the results array
         if (inputs[result_size - 1] != inputs[i]) {
-            inputs[result_size] = inputs[i];
-            result_size++;
+            inputs[result_size++] = inputs[i];
         }
     }
     return result_size;
