@@ -35,6 +35,7 @@ add_executable(dcp
     src/584.cpp
     src/585.cpp
     src/586.cpp
+    src/587.cpp
     src/unique_sorted_array.cpp
     )
 target_link_libraries(dcp Catch2::Catch2)
