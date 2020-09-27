@@ -26,11 +26,6 @@ std::ostream &operator<<(std::ostream &os, Interval const &value) {
     return os;
 }
 
-// The sorting comparison function to use when sorting intervals
-bool compare_interval(const Interval &a, const Interval &b) {
-    return a.end < b.end;
-}
-
 // Compute the minimal interval that is "stabbed" by all of the input intervals
 //
 // This is O(n) space and O(nlogn) time. You could reduce memory usage by
@@ -42,7 +37,10 @@ Interval minimal_interval(const std::vector<Interval> &input_list) {
     auto intervals = input_list;
 
     // First, we sort the intervals by their endpoints
-    std::sort(intervals.begin(), intervals.end(), compare_interval);
+    auto cmp = [](const Interval &a, const Interval &b) {
+        return a.end < b.end;
+    };
+    std::sort(intervals.begin(), intervals.end(), cmp);
     auto stab_interval =
         Interval{intervals.begin()->end, intervals.begin()->end};
 
