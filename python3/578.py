@@ -6,7 +6,7 @@ For example, given s1 = abc and s2 = bcd, return true since we can map a to b, b
 Given s1 = foo and s2 = bar, return false since the o cannot map to two characters.
 """
 
-from typing import NamedTuple
+from typing import NamedTuple, Dict
 
 
 def mapping_exists(a: str, b: str) -> bool:
@@ -27,7 +27,7 @@ def mapping_exists(a: str, b: str) -> bool:
         return False
 
     # mappings[x] gives us which character from b the character `x` from a corresponds to
-    mappings = {}
+    mappings: Dict[str, str] = {}
 
     for a_char, b_char in zip(a, b):
         if a_char not in mappings:
