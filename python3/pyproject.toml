@@ -9,6 +9,11 @@ package-mode = false
 python = "^3.11"
 pytest = "^8.3.1"
 
+[tool.poetry.dev-dependencies]
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
