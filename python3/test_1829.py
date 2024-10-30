@@ -8,7 +8,11 @@ import pytest
     [
         (
             ["cat", "calf", "dog", "bear"],
-            {"b"},
+            {"b", "cal"},
+        ),
+        (
+            ["bear", "moir", "moire", "muse", "must", "more"],
+            {"b", "mu", "mor"},
         ),
     ],
 )
