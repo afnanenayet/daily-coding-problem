@@ -53,6 +53,9 @@ def solve_array(constraints: list[str | None]) -> list[int]:
     Returns:
         Some array that satisfies the constraints.
     """
+    if not constraints:
+        return []
+
     res = [0 for _ in range(len(constraints))]
     lower_idx = 0
     upper_idx = len(constraints) - 1
