@@ -1,5 +1,6 @@
-from kmp import lps_table
 import pytest
+
+from kmp import kmp_substr, lps_table
 
 
 @pytest.mark.parametrize(
@@ -30,3 +31,23 @@ def test_lps_table(needle: str, expected: list[int]) -> None:
     for idx, lps_len in enumerate(actual):
         if lps_len > 0:
             assert needle[:lps_len] == needle[(idx - lps_len + 1) : idx + 1]
+
+
+@pytest.mark.parametrize(
+    ("needle", "haystack", "expected"),
+    [
+        ("a", "a", 0),
+        ("abc", "ababdabc", 5),
+        ("a", "b", -1),
+        ("abc", "abdabdacf", -1),
+    ],
+)
+def test_kmp_substr(needle: str, haystack: str, expected: int) -> None:
+    actual = kmp_substr(needle=needle, haystack=haystack)
+    assert actual == expected
+
+
+@pytest.mark.parametrize(("needle", "haystack"), [("", ""), ("", "hi"), ("hi", "")])
+def test_kmp_substr_bad_inputs(needle: str, haystack: str) -> None:
+    with pytest.raises(ValueError):
+        _ = kmp_substr(needle, haystack)
