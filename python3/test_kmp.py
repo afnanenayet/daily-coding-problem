@@ -22,6 +22,11 @@ from kmp import kmp_substr, lps_table
             "abcabc",
             [-1, 0, 0, 1, 2, 3],
         ),
+        (
+            "bba",
+            [-1, 1, 0],
+        ),
+        ("ABCDABD", [-1, 0, 0, 0, 1, 2, 0]),
     ],
 )
 def test_lps_table(needle: str, expected: list[int]) -> None:
@@ -30,7 +35,8 @@ def test_lps_table(needle: str, expected: list[int]) -> None:
     # Sanity check that the longest listed prefix is also a suffix
     for idx, lps_len in enumerate(actual):
         if lps_len > 0:
-            assert needle[:lps_len] == needle[(idx - lps_len + 1) : idx + 1]
+            sub_needle = needle[: idx + 1]
+            assert sub_needle[:lps_len] == sub_needle[-lps_len:]
 
 
 @pytest.mark.parametrize(
@@ -40,6 +46,7 @@ def test_lps_table(needle: str, expected: list[int]) -> None:
         ("abc", "ababdabc", 5),
         ("a", "b", -1),
         ("abc", "abdabdacf", -1),
+        ("bba", "aaaaa", -1),
     ],
 )
 def test_kmp_substr(needle: str, haystack: str, expected: int) -> None:
