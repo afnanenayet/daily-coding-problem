@@ -1,24 +1,27 @@
-[tool.poetry]
+[project]
+name = "daily_coding_problem"
+version = "0.0.1"
 description = ""
 authors = []
+requires-python = "~=3.11"
 readme = "README.md"
-packages = [{ include = "python3" }]
-package-mode = false
+dependencies = ["pytest>=8.3.1,<9", "numpy>=2.1.2,<3", "hypothesis>=6.116.0,<7"]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-pytest = "^8.3.1"
-numpy = "^2.1.2"
-hypothesis = "^6.116.0"
+[dependency-groups]
+dev = ["black>=24.4.2,<25"]
 
-[tool.poetry.dev-dependencies]
+[tool.uv]
+package = false
 
-[tool.poetry.group.dev.dependencies]
-black = "^24.4.2"
+[tool.hatch.build.targets.sdist]
+include = ["python3"]
+
+[tool.hatch.build.targets.wheel]
+include = ["python3"]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.basedpyright]
 reportMissingTypeStubs = false
